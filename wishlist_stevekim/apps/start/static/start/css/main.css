@@ -1,0 +1,8 @@
+fieldset {
+	display: inline-block;
+}
+
+form {
+	display: inline-block;
+	vertical-align: top;
+}

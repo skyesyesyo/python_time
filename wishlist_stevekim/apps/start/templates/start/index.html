@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login/Registration</title>
+			{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'start/css/main.css' %}" media="screen" charset="utf-8">
+	</head>
+	<body>
+		<h1>Welcome!</h1>
+		
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li {% if message.tags %} class='{{message.tags}}'{% endif %}>
+				{{ message }}
+			</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		
+		<!-- Login Reg need check -->
+		<form action="/validate/" method="POST">
+			<fieldset>
+				<legend>Register</legend>
+				<!-- ADDPART -->
+
+				<label>Name:
+					<input type="text" name="name">
+				</label><br>
+
+				<!-- ADDPART -->
+				<label>Username:
+					<input type="text" name="username">
+				</label><br>
+				<label>
+					Password: <input type="password" name="password">
+				</label><br>
+				<label>
+					<p>*Password should be at least 8 characters</p>
+					Confirm PW: <input type="password" name="passconf">
+				</label><br>
+				{% csrf_token %}
+				<!-- ADDPART -->
+
+				<label>Date Hired:
+					<input type="date" name="date_hire">
+				</label><br>
+
+				<!-- ADDPART -->
+				<input type="submit" value="Register">
+
+			</fieldset>
+
+		</form>
+		<!-- Adding login fucntion -->
+		<form action="/login/" method="POST">
+			<fieldset>
+				<legend>Login</legend>
+				<label>Username:
+					<input type="text" name="username">
+				</label><br>
+				<label>
+					Password: <input type="password" name="password">
+				</label><br>
+				<input type="submit" value="Login">
+				{% csrf_token %}
+			</fieldset>
+		</form>
+
+
+
+
+
+
+
+
+	</body>
+</html>
